@@ -11,8 +11,6 @@ function myIncomeAll() {
 };
 
 function myExpenseAll() {
-   
-
    let myFoodExpense = myExpenses('rent');
    let myRentExpense = myExpenses('food');
    let myClothExpense = myExpenses('cloth');
@@ -23,17 +21,21 @@ function myExpenseAll() {
 
 function myBalanceAll() {
    let myIncome = myIncomeAll()
-
    let myBalance = myIncome - myExpenseAll();
    return myBalance;
 };
 
 document.getElementById('calculate-btn').addEventListener('click', function () {
-   
-
-   //update on html 
+   const notifyFail = document.getElementById('notify-fail');
+   if (myExpenseAll() > myIncomeAll()) {
+      notifyFail.style.display = 'block';
+   }
+   else{
+      //update on html 
+      notifyFail.style.display = 'none';
    document.getElementById('totalexpense-amount').innerText = myExpenseAll();
    document.getElementById('balance-amount').innerText = myBalanceAll();
+   }
 
 });
 
