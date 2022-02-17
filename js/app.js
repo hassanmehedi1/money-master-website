@@ -57,12 +57,16 @@ document.getElementById('save-btn').addEventListener('click', function () {
 
    let saving = document.getElementById('save-number');
    let mySaving = parseFloat(saving.value);
-
-   let totalSaving = (mySaving / 100) * myIncome;
+   if (mySaving < 0 ) {
+      alert("please put a positive valid number")
+   }
+   else{
+      let totalSaving = (mySaving / 100) * myIncome;
 
    // remaining balance
    let remainBalance = myBalanceAll() - totalSaving;
    const notifyFail = document.getElementById('notify-fail-save');
+
    if (totalSaving > myBalanceAll()) {
       notifyFail.style.display = 'block';
    }
@@ -72,6 +76,7 @@ document.getElementById('save-btn').addEventListener('click', function () {
    document.getElementById('saving-amount').innerText = totalSaving;
    document.getElementById('remainingbalance-amount').innerText = remainBalance;
    }
+}
    
 
 });
