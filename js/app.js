@@ -16,6 +16,7 @@ function myExpenseAll() {
    let myFoodExpense = myExpenses('rent');
    let myRentExpense = myExpenses('food');
    let myClothExpense = myExpenses('cloth');
+   
    let allExpense = myFoodExpense + myRentExpense + myClothExpense;
    return allExpense; 
    
@@ -28,7 +29,15 @@ function myBalanceAll() {
 };
 
 document.getElementById('calculate-btn').addEventListener('click', function () {
-   const notifyFail = document.getElementById('notify-fail');
+   let myIncome = myIncomeAll()
+   let myFoodExpense = myExpenses('rent');
+   let myRentExpense = myExpenses('food');
+   let myClothExpense = myExpenses('cloth');
+   if (myIncome < 0 && myFoodExpense < 0 && myRentExpense < 0 && myClothExpense < 0) {
+      alert("please! put a positive number");
+   }
+   else{
+      const notifyFail = document.getElementById('notify-fail');
    if (myExpenseAll() > myIncomeAll()) {
       notifyFail.style.display = 'block';
    }
@@ -38,6 +47,8 @@ document.getElementById('calculate-btn').addEventListener('click', function () {
    document.getElementById('totalexpense-amount').innerText = myExpenseAll();
    document.getElementById('balance-amount').innerText = myBalanceAll();
    }
+   }
+   
    
 });
 
@@ -64,3 +75,6 @@ document.getElementById('save-btn').addEventListener('click', function () {
    
 
 });
+
+
+// || typeof myFoodExpense != 'string' && typeof myRentExpense != 'string' && typeof myClothExpense != 'string'
