@@ -1,7 +1,9 @@
 function myExpenses(item) {
    let itemInput = document.getElementById(item + '-number');
    itemInputValue = parseFloat(itemInput.value);
+
    return itemInputValue;
+
 };
 
 function myIncomeAll() {
@@ -32,11 +34,11 @@ document.getElementById('calculate-btn').addEventListener('click', function () {
    }
    else{
       //update on html 
-      notifyFail.style.display = 'none';
+   notifyFail.style.display = 'none';
    document.getElementById('totalexpense-amount').innerText = myExpenseAll();
    document.getElementById('balance-amount').innerText = myBalanceAll();
    }
-
+   
 });
 
 document.getElementById('save-btn').addEventListener('click', function () {
@@ -49,9 +51,16 @@ document.getElementById('save-btn').addEventListener('click', function () {
 
    // remaining balance
    let remainBalance = myBalanceAll() - totalSaving;
-
+   const notifyFail = document.getElementById('notify-fail-save');
+   if (totalSaving > myBalanceAll()) {
+      notifyFail.style.display = 'block';
+   }
+   else{
    // update html
+   notifyFail.style.display = 'none';
    document.getElementById('saving-amount').innerText = totalSaving;
    document.getElementById('remainingbalance-amount').innerText = remainBalance;
+   }
+   
 
 });

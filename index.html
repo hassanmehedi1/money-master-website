@@ -25,21 +25,21 @@
             </div>
             <div class="col-lg-5 col-12 col-md-6">
                <h2 class="text-primary text-center">Income</h2>
-               <form action="">
+               <form action="" >
                   <label for="income-number" class=" col-form-label col-form-label text-primary fw-bold fs-5">Income: </label>
-                  <input type="text" name="" id="income-number" class="form-control">
+                  <input type="number" name="income" id="income-number" class="form-control">
                </form>
                <br>
                <h2 class="text-primary text-center">Expenses</h2>
-               <form action="">
+               <form action="" >
                   <label for="food-number" class=" col-form-label col-form-label text-primary fw-bold fs-5">Food: </label>
-                  <input type="text" name="" id="food-number" class="form-control">
+                  <input type="number" name="food" id="food-number" class="form-control">
                   <br>
                   <label for="rent-number" class=" col-form-label col-form-label text-primary fw-bold fs-5">Rent: </label>
-                  <input type="text" name="" id="rent-number" class="form-control">
+                  <input type="number" name="rent" id="rent-number" class="form-control">
                   <br>
                   <label for="cloth-number" class=" col-form-label col-form-label text-primary fw-bold fs-5">Clothes: </label>
-                  <input type="text" name="" id="cloth-number" class="form-control">
+                  <input type="number" name="cloth" id="cloth-number" class="form-control">
                   <br>
                </form>
                <button type="button" id="calculate-btn" class="btn btn-success fw-bold text-white btn-lg d-flex justify-content-center align-items-center mx-auto">Calculate</button>
@@ -67,6 +67,7 @@
       </section>
       <div class="notify-section text-primary">
          <h4 id="notify-fail" class="notify text-primary"> Your Expense is more than your income,Please try again</>
+         <h4 id="notify-fail-save" class="notify text-primary"> Your Saving is more than your Balance,Please try again</>
       </div>
    </main>
    <!-- javascript  -->
