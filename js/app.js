@@ -4,20 +4,52 @@ function myExpenses(item) {
    return itemInputValue;
 };
 
-document.getElementById('calculate-btn').addEventListener('click', function () {
+function myIncomeAll() {
    let myIncomeText = document.getElementById('income-number').value ;
    let myIncome = parseFloat(myIncomeText);
+   return myIncome;
+};
+
+function myExpenseAll() {
    
+
    let myFoodExpense = myExpenses('rent');
    let myRentExpense = myExpenses('food');
    let myClothExpense = myExpenses('cloth');
-
    let allExpense = myFoodExpense + myRentExpense + myClothExpense;
+   return allExpense; 
+   
+};
 
-   let myBalance = myIncome - allExpense;
+function myBalanceAll() {
+   let myIncome = myIncomeAll()
 
-   // update on html 
-   document.getElementById('totalexpense-amount').innerText = allExpense;
-   document.getElementById('balance-amount').innerText = myBalance;
+   let myBalance = myIncome - myExpenseAll();
+   return myBalance;
+};
+
+document.getElementById('calculate-btn').addEventListener('click', function () {
+   
+
+   //update on html 
+   document.getElementById('totalexpense-amount').innerText = myExpenseAll();
+   document.getElementById('balance-amount').innerText = myBalanceAll();
+
+});
+
+document.getElementById('save-btn').addEventListener('click', function () {
+   let myIncome = myIncomeAll();
+
+   let saving = document.getElementById('save-number');
+   let mySaving = parseFloat(saving.value);
+
+   let totalSaving = (mySaving / 100) * myIncome;
+
+   // remaining balance
+   let remainBalance = myBalanceAll() - totalSaving;
+
+   // update html
+   document.getElementById('saving-amount').innerText = totalSaving;
+   document.getElementById('remainingbalance-amount').innerText = remainBalance;
 
 });
