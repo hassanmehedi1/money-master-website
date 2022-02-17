@@ -27,12 +27,13 @@ function myBalanceAll() {
    let myBalance = myIncome - myExpenseAll();
    return myBalance;
 };
-
+// calculate button handler
 document.getElementById('calculate-btn').addEventListener('click', function () {
    let myIncome = myIncomeAll()
    let myFoodExpense = myExpenses('rent');
    let myRentExpense = myExpenses('food');
    let myClothExpense = myExpenses('cloth');
+   // validation checking
    if (myIncome < 0 && myFoodExpense < 0 && myRentExpense < 0 && myClothExpense < 0) {
       alert("please! put a positive number");
    }
@@ -52,11 +53,13 @@ document.getElementById('calculate-btn').addEventListener('click', function () {
    
 });
 
+//Saving button handler
 document.getElementById('save-btn').addEventListener('click', function () {
    let myIncome = myIncomeAll();
 
    let saving = document.getElementById('save-number');
    let mySaving = parseFloat(saving.value);
+   // validation checking
    if (mySaving < 0 ) {
       alert("please put a positive valid number")
    }
@@ -80,6 +83,3 @@ document.getElementById('save-btn').addEventListener('click', function () {
    
 
 });
-
-
-// || typeof myFoodExpense != 'string' && typeof myRentExpense != 'string' && typeof myClothExpense != 'string'
