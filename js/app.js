@@ -30,12 +30,16 @@ function myBalanceAll() {
 // calculate button handler
 document.getElementById('calculate-btn').addEventListener('click', function () {
    let myIncome = myIncomeAll()
-   let myFoodExpense = myExpenses('rent');
-   let myRentExpense = myExpenses('food');
+   let myFoodExpense = myExpenses('food');
+   let myRentExpense = myExpenses('rent');
    let myClothExpense = myExpenses('cloth');
+
    // validation checking
-   if (myIncome < 0 && myFoodExpense < 0 && myRentExpense < 0 && myClothExpense < 0) {
+   if (myIncome < 0 || myFoodExpense < 0 || myRentExpense < 0 || myClothExpense < 0) {
       alert("please! put a positive number");
+   }
+   else if(document.getElementById('income-number').value == '' || document.getElementById('food-number').value == '' || document.getElementById('rent-number').value == '' || document.getElementById('cloth-number').value == ''){
+      alert("Please put a number")
    }
    else{
       const notifyFail = document.getElementById('notify-fail');
@@ -56,12 +60,14 @@ document.getElementById('calculate-btn').addEventListener('click', function () {
 //Saving button handler
 document.getElementById('save-btn').addEventListener('click', function () {
    let myIncome = myIncomeAll();
-
    let saving = document.getElementById('save-number');
    let mySaving = parseFloat(saving.value);
    // validation checking
    if (mySaving < 0 ) {
       alert("please put a positive valid number")
+   }
+   else if(saving.value == ""){
+      alert("put a number");
    }
    else{
       let totalSaving = (mySaving / 100) * myIncome;
